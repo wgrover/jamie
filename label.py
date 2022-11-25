@@ -18,7 +18,7 @@ bestmessage = ""
 img = Image.new('RGB', (width, height), color='white')
 imgDraw = ImageDraw.Draw(img)
 
-message = "wire wire wire wire wire"
+message = "wire"
 
 words = message.split()
 for seppattern in range(2**(len(words)-1)):
@@ -46,6 +46,6 @@ for seppattern in range(2**(len(words)-1)):
         print()
 
 print("Making label with", repr(bestmessage))
-imgDraw.text((bestwidth/2+margin, bestheight/2+margin), bestmessage, font=ImageFont.truetype("FreeSansBold.ttf",
+imgDraw.text((width/2, height/2), bestmessage, font=ImageFont.truetype("FreeSansBold.ttf",
               size=bestfontsize), fill=(0,0,0), align="center", anchor="mm", spacing=-30)
 img.save('label.png')
