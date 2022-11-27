@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from PIL import Image, ImageDraw, ImageFont
+import sys, os
 
 dpi = 300
 margin = 0.1  # inches
@@ -8,8 +9,8 @@ margin = 0.1  # inches
 margin = margin * dpi  # margin in dpi
 width = 3*dpi
 height = 2*dpi
-maxwidth = width - 2*margin
-maxheight = height - 2*margin
+maxwidth = width - 2 * margin
+maxheight = height - 2 * margin
 bestfontsize = 1
 bestwidth = 1
 bestheight = 1
@@ -18,7 +19,10 @@ bestmessage = ""
 img = Image.new('RGB', (width, height), color='white')
 imgDraw = ImageDraw.Draw(img)
 
-message = "wire"
+if len(sys.argv) > 1:
+    message = sys.argv[1]
+else:
+    message = "Depleted uranium"  # a test message
 
 words = message.split()
 for seppattern in range(2**(len(words)-1)):
@@ -49,3 +53,5 @@ print("Making label with", repr(bestmessage))
 imgDraw.text((width/2, height/2), bestmessage, font=ImageFont.truetype("FreeSansBold.ttf",
               size=bestfontsize), fill=(0,0,0), align="center", anchor="mm", spacing=-30)
 img.save('label.png')
+if len(sys.argv) > 1:  # don't print the test message
+    os.system("lpr -P iDPRT_SP410 -o media=Custom.3x2in label.png")
