@@ -1,6 +1,6 @@
 # jamie
 
-Prints labels from the command line
+Prints labels from the command line.
 
 Inspired by (and named after) Jamie Hyneman's meticulously labeled storage bins at M5 Industries, shown here on *MythBusters*:
 
