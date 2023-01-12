@@ -24,6 +24,12 @@ Tested using a roll of 3 inch by 2 inch labels, but other label sizes are possib
 
 ## Usage
 
+Running
+
     python3 jamie.py "Depleted uranium"
 
- ![Sample label](label.png)
+automatically prints this label:
+
+<kbd>
+    <img src="label.png" width="400">
+</kbd>
