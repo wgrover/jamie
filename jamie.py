@@ -38,7 +38,9 @@ for seppattern in range(2**(len(words)-1)):
     fontsize = 0
     while textWidth < maxwidth and textHeight < maxheight:
         fontsize += 1
-        textWidth, textHeight = imgDraw.textsize(testmessage, font=ImageFont.truetype("FreeSansBold.ttf", size=fontsize))
+        # textWidth, textHeight = imgDraw.textsize(testmessage, font=ImageFont.truetype("FreeSansBold.ttf", size=fontsize))
+        left, top, right, bottom = imgDraw.multiline_textbbox((0,0), testmessage, font=ImageFont.truetype("FreeSansBold.ttf", size=fontsize))
+        textWidth, textHeight = right - left, bottom - top
     print(repr(testmessage), fontsize, end="")
     if fontsize > bestfontsize:
         bestmessage = testmessage
