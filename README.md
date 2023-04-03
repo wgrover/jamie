@@ -31,5 +31,5 @@ Running
 automatically prints this label:
 
 <kbd>
-    <img src="label.png" width="400">
+    <img src="uranium.png" width="400">
 </kbd>
