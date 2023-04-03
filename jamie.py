@@ -39,7 +39,7 @@ for seppattern in range(2**(len(words)-1)):
     while textWidth < maxwidth and textHeight < maxheight:
         fontsize += 1
         # textWidth, textHeight = imgDraw.textsize(testmessage, font=ImageFont.truetype("FreeSansBold.ttf", size=fontsize))
-        left, top, right, bottom = imgDraw.multiline_textbbox((0,0), testmessage, font=ImageFont.truetype("FreeSansBold.ttf", size=fontsize))
+        left, top, right, bottom = imgDraw.multiline_textbbox((0,0), testmessage, font=ImageFont.truetype("FreeSansBold.ttf", size=fontsize, layout_engine=ImageFont.Layout.BASIC))
         textWidth, textHeight = right - left, bottom - top
     print(repr(testmessage), fontsize, end="")
     if fontsize > bestfontsize:
@@ -52,8 +52,8 @@ for seppattern in range(2**(len(words)-1)):
         print()
 
 print("Making label with", repr(bestmessage))
-imgDraw.text((width/2, height/2), bestmessage, font=ImageFont.truetype("FreeSansBold.ttf",
-              size=bestfontsize), fill=(0,0,0), align="center", anchor="mm", spacing=-30)
+imgDraw.multiline_text((width/2, height/2), bestmessage, font=ImageFont.truetype("FreeSansBold.ttf",
+              size=bestfontsize, layout_engine=ImageFont.Layout.BASIC), fill=(0,0,0), align="center", anchor="mm")
 img.save('label.png')
 if len(sys.argv) > 1:  # don't print the test message
     os.system("lpr -P iDPRT_SP410 -o media=Custom.3x2in label.png")
