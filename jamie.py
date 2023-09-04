@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from PIL import Image, ImageDraw, ImageFont
+from pathlib import Path
 import sys, os
 
 dpi = 300
@@ -18,6 +19,7 @@ bestmessage = ""
 
 img = Image.new('RGB', (width, height), color='white')
 imgDraw = ImageDraw.Draw(img)
+fontfile = str(Path(__file__).with_name("FreeSansBold.ttf"))
 
 if len(sys.argv) > 1:
     message = sys.argv[1]
@@ -38,7 +40,7 @@ for seppattern in range(2**(len(words)-1)):
     fontsize = 0
     while textWidth < maxwidth and textHeight < maxheight:
         fontsize += 1
-        left, top, right, bottom = imgDraw.multiline_textbbox((0,0), testmessage, font=ImageFont.truetype("FreeSansBold.ttf", size=fontsize, layout_engine=ImageFont.Layout.BASIC))
+        left, top, right, bottom = imgDraw.multiline_textbbox((0,0), testmessage, font=ImageFont.truetype(fontfile, size=fontsize, layout_engine=ImageFont.Layout.BASIC))
         textWidth, textHeight = right - left, bottom - top
     print(repr(testmessage), fontsize, end="")
     if fontsize > bestfontsize:
@@ -51,7 +53,7 @@ for seppattern in range(2**(len(words)-1)):
         print()
 
 print("Making label with", repr(bestmessage))
-imgDraw.multiline_text((width/2, height/2), bestmessage, font=ImageFont.truetype("FreeSansBold.ttf",
+imgDraw.multiline_text((width/2, height/2), bestmessage, font=ImageFont.truetype(fontfile,
               size=bestfontsize, layout_engine=ImageFont.Layout.BASIC), fill=(0,0,0), align="center", anchor="mm")
 img.save('label.png')
 if len(sys.argv) > 1:  # don't print the test message
