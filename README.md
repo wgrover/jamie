@@ -34,9 +34,7 @@ automatically prints this label:
     <img src="uranium.png" width="400">
 </kbd>
 
+<br><br>
 Here are some of the labels in use in my home lab space:
-
-<kbd>
-    <img src="home.png" width="400">
-</kbd>
+<img src="home.png" width="400">
 
