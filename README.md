@@ -36,5 +36,6 @@ automatically prints this label:
 
 <br><br>
 Here are some of the labels in use in my home lab space:
+
 <img src="home.png" width="400">
 
