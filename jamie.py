@@ -57,4 +57,4 @@ imgDraw.multiline_text((width/2, height/2), bestmessage, font=ImageFont.truetype
               size=bestfontsize, layout_engine=ImageFont.Layout.BASIC), fill=(0,0,0), align="center", anchor="mm")
 img.save('label.png')
 if len(sys.argv) > 1:  # don't print the test message
-    os.system("lpr -P iDPRT_SP410 -o media=Custom.3x2in label.png")
+    os.system("lpr -P _2x3_label_printer -o media=Custom.3x2in label.png")
