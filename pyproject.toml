@@ -1,12 +1,9 @@
 [project]
 name = "jamie"
 version = "0.1.0"
-description = "Prints labels from the command line."
+description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.13"
 dependencies = [
-    "Pillow",
+    "pillow>=11.1.0",
 ]
-
-[project.scripts]
-jamie = "jamie:main"
